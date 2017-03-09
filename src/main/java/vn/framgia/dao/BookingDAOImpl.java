@@ -19,5 +19,4 @@ public class BookingDAOImpl extends GenericDAO<Booking, Long> implements IBookin
 		return criteria.list();
 	}
 	
-	
 }

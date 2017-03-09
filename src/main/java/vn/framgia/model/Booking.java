@@ -2,7 +2,6 @@ package vn.framgia.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 public class Booking implements Serializable {
 	private int id;
