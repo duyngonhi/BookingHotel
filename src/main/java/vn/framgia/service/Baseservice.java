@@ -1,7 +1,7 @@
 package vn.framgia.service;
 
+import vn.framgia.dao.IBookingDAO;
 import vn.framgia.dao.IUserDAO;
-import vn.framgia.dao.UserDAO;
 
 /**
  * Created by FRAMGIA\duong.van.tien on 06/03/2017.
@@ -10,12 +10,22 @@ import vn.framgia.dao.UserDAO;
 public class Baseservice {
 
     protected IUserDAO userDAO;
+    protected IBookingDAO bookingDAO;
 
     public IUserDAO getUserDAO() {
-        return null;
+        return userDAO;
     }
 
     public void setUserDAO(IUserDAO userDAO) {
         this.userDAO = userDAO;
     }
+
+	public IBookingDAO getBookingDAO() {
+		return bookingDAO;
+	}
+
+	public void setBookingDAO(IBookingDAO bookingDAO) {
+		this.bookingDAO = bookingDAO;
+	}
+
 }

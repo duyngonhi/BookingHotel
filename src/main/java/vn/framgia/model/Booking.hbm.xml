@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 9, 2017 6:59:30 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="vn.framgia.model.Booking" table="tblBooking">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="checkIn" type="java.util.Date">
+            <column name="CHECKIN" />
+        </property>
+        <property name="checkOut" type="java.util.Date">
+            <column name="CHECKOUT" />
+        </property>
+        <property name="totalPrice" type="float">
+            <column name="TOTALPRICE" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="NOTE" />
+        </property>
+        <many-to-one name="clientId" class="vn.framgia.model.Client" fetch="join">
+            <column name="CLIENTID" />
+        </many-to-one>
+        <many-to-one name="roomId" class="vn.framgia.model.Room" fetch="join">
+            <column name="ROOMID" />
+        </many-to-one>
+        <property name="isCheckIn" type="int">
+            <column name="ISCHECKIN" />
+        </property>
+    </class>
+</hibernate-mapping>

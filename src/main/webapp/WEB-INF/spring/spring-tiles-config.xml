@@ -17,4 +17,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/index.jsp" />
 	</definition>
 
+	<definition name="showbooking" extends="base.definition">
+		<put-attribute name="title" value="Show Booking" />
+		<put-attribute name="body" value="/WEB-INF/views/showbooking.jsp" />
+	</definition>
+	
 </tiles-definitions>

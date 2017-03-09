@@ -9,6 +9,7 @@
 <!-- Bootstrap core CSS -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="assets/css/mystyle.css" rel="stylesheet">
     
 <!-- Custom styles for this template -->
 <link href="assets/css/style.css" rel="stylesheet">
@@ -23,6 +24,12 @@
 <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="assets/js/jquery.scrollTo.min.js"></script>
 <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css"/>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 <!--common script for all pages-->
 <script src="assets/js/common-scripts.js"></script>

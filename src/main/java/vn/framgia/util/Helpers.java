@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -364,5 +365,15 @@ public final class Helpers {
         while (limit > 0 && list.size() > limit) {
             list.remove(list.size() - 1);
         }
+    }
+    
+    public static String convertDatetoString(Date date){
+    	try{
+    		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    		return dateFormat.format(date);
+    		
+    	}catch(Exception e){
+    		return "";
+    	}
     }
 }
