@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 11, 2017 1:20:11 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="vn.framgia.model.Activity" table="tblActivity">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="clientId" class="vn.framgia.model.Client" fetch="join">
+            <column name="CLIENTID" />
+        </many-to-one>
+        <many-to-one name="roomId" class="vn.framgia.model.Room" fetch="join">
+            <column name="ROOMID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

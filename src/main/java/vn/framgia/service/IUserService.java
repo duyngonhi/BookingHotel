@@ -1,6 +1,8 @@
 package vn.framgia.service;
 
+import vn.framgia.bean.AuthentUserBean;
 import vn.framgia.bean.UserBean;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,4 +13,5 @@ import java.util.List;
 public interface IUserService extends Serializable{
 
     public List<UserBean> findAll();
+    public AuthentUserBean getUserByAcount(String username);
 }

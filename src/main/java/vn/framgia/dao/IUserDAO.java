@@ -7,4 +7,5 @@ import vn.framgia.model.User;
  *
  */
 public interface IUserDAO extends IGenericDAO<User, Long>{
+	public User getUserByUserPass(String username);
 }

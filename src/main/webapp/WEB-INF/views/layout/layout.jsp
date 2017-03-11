@@ -29,6 +29,11 @@
 <!--common script for all pages-->
 <script src="assets/js/common-scripts.js"></script>
 
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 <!--script for this page-->
 <script>
     $(function(){

@@ -2,10 +2,6 @@ package vn.framgia.model;
 
 import java.io.Serializable;
 
-/**
- * Created by FRAMGIA\duong.van.tien on 06/03/2017.
- *
- */
 @SuppressWarnings("serial")
 public class User implements Serializable{
     private int id;
@@ -17,7 +13,7 @@ public class User implements Serializable{
     private String role;
 
     public User() {
-
+    	super();
     }
 
     public User(int id, String username, String password, String fullname,
