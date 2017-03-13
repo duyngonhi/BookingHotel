@@ -3,35 +3,37 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <header>
-<script>
-    $(document).ready(function () {
-        var date_input = $('input[name="date"]'); //our date input has the name "date"
-        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-        date_input.datepicker({
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        })
+<script type="text/javascript">
+$(document).ready(function () {
+    var date_input = $('input[name="date"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    date_input.datepicker({
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
     })
+});
+function submitSearch() {
+    document.getElementById("formSearch").submit();
+}
 </script>
 </header>
 <body>
 <div class="col-lg-9 main-chart">
-    <div>
         <div class="bootstrap-iso">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <form class="form-horizontal" method="post">
+                        <form id="formSearch" action="searchbill" class="form-horizontal" method="post">
                             <div class="form-group " style="text-align: center;">
                                 <div class="col-sm-8">
                                     <div style="margin-top: 5px; ">
-                                        <input type="text" class="form-control" id="contact_name" name="name">
+                                        <input type="text" class="form-control" id="contact_name" name="search">
                                     </div>
                                 </div>
                                 <label class="control-label col-sm-4 requiredField" for="date">
-                                    <a class="btn btn-success btn-sm pull-left" href="todo_list.html#">Search Task</a>
+                                    <a id="search" class="btn btn-success btn-sm pull-left" href="javascript:submitSearch()">Search Task</a>
                                 </label>
                             </div>
                     </form>
@@ -39,8 +41,6 @@
             </div>
         </div>
     </div>
-
-</div>
 
 <c:if test="${!empty listbooks}">
 <c:forEach var="lsBook" items="${listbooks}">

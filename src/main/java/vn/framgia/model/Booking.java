@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Booking implements Serializable {
 	private int id;
-	private Date checkIn;
+	private Date checkin;
 	private Date checkOut;
 	private float totalPrice;
 	private String note;
@@ -21,7 +21,7 @@ public class Booking implements Serializable {
 			String note, Client clientId, Room roomId, int isCheckIn) {
 		super();
 		this.id = id;
-		this.checkIn = checkIn;
+		this.checkin = checkIn;
 		this.checkOut = checkOut;
 		this.totalPrice = totalPrice;
 		this.note = note;
@@ -39,11 +39,11 @@ public class Booking implements Serializable {
 	}
 
 	public Date getCheckIn() {
-		return checkIn;
+		return checkin;
 	}
 
 	public void setCheckIn(Date checkIn) {
-		this.checkIn = checkIn;
+		this.checkin = checkIn;
 	}
 
 	public Date getCheckOut() {

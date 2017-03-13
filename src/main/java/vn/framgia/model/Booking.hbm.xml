@@ -30,4 +30,10 @@
             <column name="ISCHECKIN" />
         </property>
     </class>
+    
+    <sql-query name="searbill">
+    	<![CDATA[
+    		select b.id, b.checkIn, b.checkOut, b.totalPrice, b.note, b.clientId, b.roomId, b.isCheckIn from tblBooking b left join tblClient on b.clientId = tblClient.id
+    	]]>
+    </sql-query>
 </hibernate-mapping>
