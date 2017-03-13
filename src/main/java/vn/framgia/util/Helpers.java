@@ -16,6 +16,9 @@ public final class Helpers {
     // file name
     private static final String CGS_CONFIG_FILE = "cgs_config.properties";
     private static final String CGS_SERVER_FILE = "spring-server-config.properties";
+    public static final String STATUS_NO = "NO";
+    public static final String STATUS_NOT = "NOT";
+    public static final String STATUS_OK = "OK";
 
     // for logging
     // private static final Logit m_log = Logit.getInstance(Helpers.class);

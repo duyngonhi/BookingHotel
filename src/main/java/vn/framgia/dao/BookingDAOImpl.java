@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
-import org.hibernate.FetchMode;
 import org.hibernate.criterion.Restrictions;
 
 import vn.framgia.model.Booking;
@@ -38,6 +37,13 @@ public class BookingDAOImpl extends GenericDAO<Booking, Long> implements IBookin
 				Restrictions.or(criterionName, criterionAddress)));
 
 		return criteria.list();
+	}
+
+	@Override
+	public Booking getbookingById(int bookingId) {
+		Criteria criteria = getSession().createCriteria(Booking.class);
+		criteria.add(Restrictions.eq("id", bookingId));
+		return (Booking)criteria.uniqueResult();
 	}
 	
 }

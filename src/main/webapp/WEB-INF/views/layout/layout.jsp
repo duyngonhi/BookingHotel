@@ -9,7 +9,7 @@
 <!-- Bootstrap core CSS -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href="assets/css/mystyle.css" rel="stylesheet">
+<link href="assets/css/mytyle.css" rel="stylesheet">
     
 <!-- Custom styles for this template -->
 <link href="assets/css/style.css" rel="stylesheet">
