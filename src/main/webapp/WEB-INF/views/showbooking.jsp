@@ -2,23 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<header>
-<script type="text/javascript">
-$(document).ready(function () {
-    var date_input = $('input[name="date"]'); //our date input has the name "date"
-    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-    })
-});
-function submitSearch() {
-    document.getElementById("formSearch").submit();
-}
-</script>
-</header>
 <body>
 <div class="col-lg-9 main-chart">
         <div class="bootstrap-iso">
@@ -66,13 +49,19 @@ function submitSearch() {
 							<td><c:out value="${book.checkIn}"></c:out></td>
 							<td><c:out value="${book.checkOut}"></c:out></td>
 							<td><c:out value="${book.priceRoom}"></c:out></td>
-							<c:if test="${book.status == false}">
+							<c:if test="${book.status == 'NO'}">
 								<td><span class="badge bg-important">No</span></td>
 							</c:if>
-							<c:if test="${book.status == true}">
-								<td><button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button></td>
+							<c:if test="${book.status == 'OK'}">
+								<td><span class="badge bg-success"><i class=" fa fa-check"></i></span></td>	
 							</c:if>
-							<td><a class="badge bg-success" href="#">DETAIL</a></td>
+							<c:if test="${book.status == 'NOT'}">
+								<td><span class="badge bg-warning">No</span></td>
+							</c:if>
+							<td>
+								<a class="badge bg-success" href="#">PAY</a>
+								<a class="badge btn-primary" href="#">DETAIL</a>
+							</td>
 						</tr>
 					</c:forEach>
 					</tbody>

@@ -6,6 +6,6 @@ import java.util.List;
 import vn.framgia.bean.ShowBookingBean;
 
 public interface IBookingService extends Serializable{
-	public List<List<ShowBookingBean>> showBooking();
-	public List<List<ShowBookingBean>> searchBillByNameClient(String nameClient);
+	public List<List<ShowBookingBean>> findAllBookingOrderByDesc();
+	public List<List<ShowBookingBean>> searchBookingByNameClient(String nameClient);
 }

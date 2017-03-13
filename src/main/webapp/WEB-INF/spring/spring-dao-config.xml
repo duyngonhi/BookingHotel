@@ -15,4 +15,16 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	
+	<bean id="BillDAO" class="vn.framgia.dao.BillDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="UserServiceDAO" class="vn.framgia.dao.UserServiceDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 </beans>

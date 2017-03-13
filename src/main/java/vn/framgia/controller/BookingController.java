@@ -15,19 +15,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.framgia.bean.ShowBookingBean;
+import vn.framgia.service.IBillService;
 import vn.framgia.service.IBookingService;
+import vn.framgia.util.Helpers;
 
 @Controller
 public class BookingController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
-	private IBookingService bookingService; 
+	private IBookingService bookingService;
+	@Autowired
+	private IBillService billService;
 	
 	@RequestMapping("/showbooking")
 	public ModelAndView show(){
 		Map<String, Object> model = new HashMap<String, Object>();
-		List<List<ShowBookingBean>> lstBookingBean = bookingService.showBooking();
+		List<List<ShowBookingBean>> lstBookingBean = bookingService.findAllBookingOrderByDesc();
 		model.put("listbooks", lstBookingBean);
 		return new ModelAndView("showbooking", model);
 	}
@@ -35,11 +39,10 @@ public class BookingController {
 	@RequestMapping(value = "/searchbill", method = RequestMethod.POST)
 	public ModelAndView searchBillByNameClient(@RequestParam(value="search") String search){
 		Map<String, Object> model = new HashMap<String, Object>();
-		if(search == null){
+		if(Helpers.isEmpty(search)){
 			search = "";
 		}
-		System.out.println("SSSSSSSSSS: "+search);
-		List<List<ShowBookingBean>> lstBookingBean = bookingService.searchBillByNameClient(search);
+		List<List<ShowBookingBean>> lstBookingBean = bookingService.searchBookingByNameClient(search);
 		model.put("listbooks", lstBookingBean);
 		return new ModelAndView("showbooking", model);
 	}

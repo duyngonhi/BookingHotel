@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2017 2:28:01 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="vn.framgia.model.Bill" table="tblBill">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="paymentDate" type="java.util.Date">
+            <column name="PAYMENTDATE" />
+        </property>
+        <property name="paymentAmount" type="float">
+            <column name="PAYMENTAMOUNT" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="NOTE" />
+        </property>
+        <many-to-one name="bookingId" class="vn.framgia.model.Booking" fetch="join">
+            <column name="BOOKINGID" />
+        </many-to-one>
+        <many-to-one name="userId" class="vn.framgia.model.User" fetch="join">
+            <column name="USERID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
