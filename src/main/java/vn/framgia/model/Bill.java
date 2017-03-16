@@ -59,20 +59,20 @@ public class Bill implements Serializable {
 		this.note = note;
 	}
 
-	public Booking getBookingId() {
+	public Booking getBooking() {
 		return booking;
 	}
 
-	public void setBookingId(Booking bookingId) {
-		this.booking = bookingId;
+	public void setBooking(Booking booking) {
+		this.booking = booking;
 	}
 
-	public User getUserId() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUserId(User userId) {
-		this.user = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

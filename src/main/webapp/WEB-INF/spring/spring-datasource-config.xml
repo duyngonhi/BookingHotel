@@ -46,7 +46,6 @@
 				<value>classpath*:vn/framgia/model/Room.hbm.xml</value>
 				<value>classpath*:vn/framgia/model/Item.hbm.xml</value>
 				<value>classpath*:vn/framgia/model/Bill.hbm.xml</value>
-				<value>classpath*:vn/framgia/model/UserService.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
