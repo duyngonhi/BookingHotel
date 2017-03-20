@@ -11,7 +11,7 @@ import vn.framgia.dao.GenericDAO;
 import vn.framgia.dao.IBookingDAO;
 import vn.framgia.model.Booking;
 
-public class BookingDAOImpl extends GenericDAO<Booking, Long> implements IBookingDAO{
+public class BookingDAOImpl extends GenericDAO<Booking, Integer> implements IBookingDAO{
 	public BookingDAOImpl(){
 		super.setPersistentClass(Booking.class);
 	}

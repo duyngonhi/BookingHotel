@@ -23,23 +23,23 @@ public class BookingServiceImpl extends BaseserviceImpl implements IBookingServi
 				ShowBookingBean bookingBean = null;
 				int buffer = 0;
 				for (Booking book : listBooking) {
-					if(buffer != book.getClientId().getId() && buffer != 0) {
+					if(buffer != book.getClient().getId() && buffer != 0) {
 						results.add(listObj);
 					}
-					if(buffer != book.getClientId().getId()){
+					if(buffer != book.getClient().getId()){
 						listObj = new ArrayList<ShowBookingBean>();
 					}
 					bookingBean = new ShowBookingBean();
 					bookingBean.setBookingId(book.getId());
-					bookingBean.setNameClient(book.getClientId().getFullName());
-					bookingBean.setNameRoom(book.getRoomId().getName());
+					bookingBean.setNameClient(book.getClient().getFullName());
+					bookingBean.setNameRoom(book.getRoom().getName());
 					bookingBean.setCheckIn(Helpers.convertDatetoString(book.getCheckIn()));
 					bookingBean.setCheckOut(Helpers.convertDatetoString(book.getCheckOut()));
 					bookingBean.setPriceRoom((int)(book.getTotalPrice() + getTotalPriceService(book.getId())));
 					bookingBean.setStatus(checkStatusBooking(book));
 					
 					listObj.add(bookingBean);
-					buffer = book.getClientId().getId();
+					buffer = book.getClient().getId();
 				}
 				results.add(listObj);
 				return results;

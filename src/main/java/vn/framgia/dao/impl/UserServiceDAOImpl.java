@@ -12,7 +12,7 @@ import vn.framgia.model.UsedItem;
 public class UserServiceDAOImpl extends GenericDAO<UsedItem, Integer> implements IUserServiceDAO {
 
 	@Override
-	public List<UsedItem> findServiceByBookingId(int bookingId) {
+	public List<UsedItem> findServiceByBookingId(Integer bookingId) {
 		Criteria criteria = getSession().createCriteria(UsedItem.class);
 		criteria.add(Restrictions.eq("bookingId.id", bookingId));
 		return criteria.list();
