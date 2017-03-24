@@ -7,6 +7,8 @@ public class BillDetailBean {
 	private Integer priceRoom;
 	private List<PaymentDetail> serviceFollow;
 	private Integer totalRoom;
+	private Integer refunded;
+	private Integer remain;
 
 	public String getRoom() {
 		return room;
@@ -40,4 +42,20 @@ public class BillDetailBean {
 		this.totalRoom = totalRoom;
 	}
 
+	public Integer getRefunded() {
+		return refunded;
+	}
+
+	public void setRefunded(Integer refunded) {
+		this.refunded = refunded;
+	}
+
+	public Integer getRemain() {
+		return remain;
+	}
+
+	public void setRemain(Integer remain) {
+		this.remain = remain;
+	}
+	
 }

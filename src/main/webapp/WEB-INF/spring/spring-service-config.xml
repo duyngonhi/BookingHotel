@@ -64,7 +64,18 @@
 	<bean id="ClientService" parent="transactionProxyTemplate">
 		<property name="target">
 			<bean class="vn.framgia.service.impl.ClientServiceImpl">
-				<property name="clientDAO" ref="ClientDAO"/>
+				<property name="clientDAO" ref="ClientDAO" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="ActivityService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="vn.framgia.service.impl.ActivityServiceImpl">
+				<property name="billDAO" ref="BillDAO"/>
+				<property name="bookingDAO" ref="BookingDAO"/>
+				<property name="userDAO" ref="UserDAO"/>
+				<property name="activityDAO" ref="ActivityDAO"/>
 			</bean>
 		</property>
 	</bean>

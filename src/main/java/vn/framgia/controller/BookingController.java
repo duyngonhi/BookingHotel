@@ -1,28 +1,36 @@
 package vn.framgia.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import vn.framgia.bean.*;
-import vn.framgia.service.*;
-import java.util.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import vn.framgia.bean.BookingBean;
+import vn.framgia.bean.ClientBean;
+import vn.framgia.bean.ConditionBookingBean;
+import vn.framgia.bean.ItemBean;
+import vn.framgia.bean.RoomBean;
 import vn.framgia.bean.ShowBookingBean;
 import vn.framgia.service.IBookingService;
+import vn.framgia.service.IClientService;
+import vn.framgia.service.IItemService;
+import vn.framgia.service.IRoomService;
 import vn.framgia.util.Helpers;
 
 @Controller
 public class BookingController {
 
-    private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
+    private static final Logger logger = Logger.getLogger(BookingController.class);
     @Autowired
     private IBookingService bookingService;
 

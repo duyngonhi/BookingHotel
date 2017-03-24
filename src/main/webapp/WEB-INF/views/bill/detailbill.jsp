@@ -37,6 +37,8 @@
 							<td>Room Price</td>
 							<td>Service Follow</td>
 							<td>Total Room</td>
+							<td>Refunded</td>
+							<td>Remain</td>
 						</tr>
 						<c:if test="${!empty beanClient.detailBean}">
 						<tr>
@@ -55,6 +57,8 @@
 								</table>
 							</td>
 							<td>Total:<c:out value="${beanClient.detailBean.totalRoom}"/></td>
+							<td><c:out value="${beanClient.detailBean.refunded}"/></td>
+							<td><c:out value="${beanClient.detailBean.remain}"/></td>
 						</tr>
 						</c:if>
 					</table>
@@ -71,7 +75,7 @@
 					<a class="badge bg-success" id="id_print">Print</a>
 				</div>
 				<div style="float: right; margin-right: 30px">
-					<a class="badge bg-success" href="showbooking">Previous</a>
+					<a class="badge bg-success" href="payment?id=${beanClient.bookingId}">Previous</a>
 				</div>
 			</div>
        </div><!-- /content-panel -->

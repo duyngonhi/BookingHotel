@@ -47,6 +47,7 @@
 				<value>classpath*:vn/framgia/model/Item.hbm.xml</value>
 				<value>classpath*:vn/framgia/model/Bill.hbm.xml</value>
 				<value>classpath*:vn/framgia/model/UsedItem.hbm.xml</value>
+				<value>classpath*:vn/framgia/model/Activity.hbm.xml</value>
 			</list>
 		</property>
 

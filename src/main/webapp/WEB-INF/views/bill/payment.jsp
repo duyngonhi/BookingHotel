@@ -35,7 +35,7 @@
                   <td><c:out value="${paymentBean.total}"/></td>
                   <td><span class="badge bg-success"><c:out value="${paymentBean.refunded}"/></span></td>
                   <td><span class="badge bg-warning"><c:out value="${paymentBean.remain}"/></span></td>
-                  <td><input type="text" name="payrefuned"/></td>
+                  <td><input id="inputpay" type="text" name="payrefuned"/><span id="errmsg"></span></td>
 				  <td><a id="btnPayment" class="btn btn-success btn-sm pull-left">Submit</a></td>	
               </tr>
               <tr>
@@ -99,6 +99,7 @@
 	                  <td><c:out value="${historyPayment.paymentAmount}"/></td>
 	                  <td><c:out value="${historyPayment.note}"/></td>
 	                  <td><c:out value="${historyPayment.nameUser}"/></td>
+	                  <td><a class="badge bg-success" href="detailbill?id=${paymentBean.bookingId}&bill=${historyPayment.id}">DETAIL</a></td>
 	              	</tr>
               </c:forEach>
               </c:if>
@@ -111,6 +112,17 @@
 </div>
 <!-- /col-lg-9 END SECTION MIDDLE -->
 <script>
+	$(document).ready(function () {
+	  $("#inputpay").keypress(function (e) {
+		if((48 <= e.which && e.which <= 57) || e.which == 8 || e.which == 0 || e.which == 45){
+			return true
+		}else {
+			$("#errmsg").html("Digits Only").show().fadeOut("slow");
+	        return false;
+		}
+	   });
+	});
+	
 	$("#btnPayment").on("click",function(){
 		$("#formsubmitpay").submit();
 	});

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2017 9:48:23 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="vn.framgia.model.Activity" table="tblActivity">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="user" class="vn.framgia.model.User" fetch="select">
+            <column name="USERID" />
+        </many-to-one>
+        <property name="targetId" type="java.lang.Integer">
+            <column name="TARGETID" />
+        </property>
+        <property name="actionType" type="java.lang.String">
+            <column name="ACTIONTYPE" />
+        </property>
+        <property name="noteAction" type="java.lang.String">
+            <column name="NOTEACTION" />
+        </property>
+        <property name="createDate" type="java.util.Date">
+            <column name="CREATEDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

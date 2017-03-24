@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class CustomUserDetail implements UserDetails{
 
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
+    public static final int ZERO_NUMBER = 0;
     private String userId;
     private String password;
     private String username;
