@@ -164,4 +164,47 @@ public class BookingController {
         }
         return new ModelAndView("redirect:viewBooking");
     }
+
+    @RequestMapping(value = "/statictical", method = RequestMethod.GET)
+    public ModelAndView statictical(Model model) {
+        try {
+            ModelAndView view = new ModelAndView();
+            ConditionBookingBean conditionBookingBean = new ConditionBookingBean();
+            model.addAttribute("conditionBookingBeanForm", conditionBookingBean);
+            view.setViewName("staticticalRevenue");
+            return view;
+        } catch (Exception e) {
+            logger.error("Exception in function statictical in BookingController : ", e);
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/staticticalResult", method = RequestMethod.GET)
+    public @ResponseBody List<Statistical> staticticalRevenue(
+            @RequestParam(value = "startDateVal") String startDate, @RequestParam(value = "endDateVal") String endDate,
+            @ModelAttribute("conditionBookingBeanForm") ConditionBookingBean conditionBookingBean) {
+        ModelAndView view = new ModelAndView();
+        try {
+            Date start = Helpers.convertStringtoDate(startDate);
+            Date end = Helpers.convertStringtoDate(endDate);
+            List<Statistical> statisticalsList = bookingService.statisticRevenue(start, end);
+            if(statisticalsList == null) {
+                view.addObject("err_empty", "Can not find results by condition");
+                List<RoomBean> listRoomsBean = roomService.findAllRooms();
+                view.addObject("listRoomsBean", listRoomsBean);
+                view.setViewName("viewBooking");
+                return statisticalsList;
+            }
+            conditionBookingBean.setStartDate(conditionBookingBean.getStartDate());
+            conditionBookingBean.setEndDate(conditionBookingBean.getEndDate());
+            conditionBookingBean.setSize(conditionBookingBean.getSize());
+            view.addObject("conditionBookingBeanForm", conditionBookingBean);
+            view.addObject("statisticalsList", statisticalsList);
+            view.setViewName("staticticalRevenue");
+            return statisticalsList;
+        } catch (Exception e) {
+            logger.error("Exception in function staticticalRevenue in BookingController : ", e);
+        }
+        return null;
+    }
 }

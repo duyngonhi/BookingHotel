@@ -185,4 +185,13 @@ public class BookingServiceImpl extends BaseserviceImpl implements IBookingServi
 	public Long countRoom() {
 		return roomDAO.count();
 	}
+
+	public List<Statistical> statisticRevenue(Date startDate, Date endDate) {
+		try {
+			return bookingDAO.statisticRevenue(startDate, endDate);
+		} catch (Exception e) {
+			logger.info("Exception at function statisticRevenue in class BookingServiceImpl : ", e);
+		}
+		return null;
+	}
 }
