@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <h2 class="margin-bottom-10">Edit User</h2>
-<form:form action="${pageContext.request.contextPath}/updateUser"
+<form:form action="${pageContext.request.contextPath}/admin_updateUser"
 	modelAttribute="userForm" class="templatemo-login-form" method="post">
 	<c:if test="${!empty errUpdateUser}">
 					<p>
@@ -72,8 +72,8 @@
 						update if you want
 					</div>
 					<select name="role" class="form-control" id="role">
-						<option value="user" selected="selected">ROLE_USER</option>
-						<option value="admin">ROLE_ADMIN</option>
+						<option value="user" selected="selected">USER</option>
+						<option value="admin">ADMIN</option>
 					</select>
 				</div>
 				<div style="text-align: left">

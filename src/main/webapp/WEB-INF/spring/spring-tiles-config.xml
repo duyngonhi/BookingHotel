@@ -114,4 +114,10 @@
 		<put-attribute name="title" value="Detail Bill" />
 		<put-attribute name="body" value="/WEB-INF/views/bill/detailbill.jsp" />
 	</definition>
+
+	<definition name="editProfile" extends="base.definition">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="body" value="/WEB-INF/views/user/editProfile.jsp" />
+	</definition>
+
 </tiles-definitions>

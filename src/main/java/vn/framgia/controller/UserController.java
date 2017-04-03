@@ -34,19 +34,19 @@ public class UserController {
     @Autowired
 	private IUserService userService;
 
-	@RequestMapping(value = "/newUser", method = RequestMethod.GET)
+	@RequestMapping(value = "admin_newUser", method = RequestMethod.GET)
 	public String createUser(Model model, @ModelAttribute(value = "userForm") UserBean userForm) {
 		UserBean user = new UserBean();
 		model.addAttribute("userForm", user);
 		return "newUser";
 	}
-	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin_newUser", method = RequestMethod.POST)
 	public ModelAndView createUser(Model model, @ModelAttribute(value = "userForm") UserBean userForm,
 			BindingResult result, HttpServletRequest request) {
 		boolean check = true;
 		String phone = userForm.getPhone();
 		String email = userForm.getEmail();
-		String role = request.getParameter("role");
+		String role = request.getParameter("role").toUpperCase();
 		if (Helpers.isEmpty(userForm.getFullname())) {
 			result.reject("fullname", "Please enter Full Name!");
 			check = false;
@@ -83,10 +83,10 @@ public class UserController {
 		userForm.setRole(role);
 		userService.createUser(userForm);
 		logger.info("add userr success............");
-		return new ModelAndView("redirect:listUser");
+		return new ModelAndView("redirect:admin_listUser");
 	}
 	
-	@RequestMapping(value = "/listUser", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_listUser", method = RequestMethod.GET)
 	public ModelAndView showListUsers() {
 		ModelAndView model = new ModelAndView("listUser");
 		List<UserBean> listUser = userService.findAll();
@@ -97,7 +97,7 @@ public class UserController {
 		return model;
 	}
     
-	@RequestMapping("/deleteUser")
+	@RequestMapping("/admin_deleteUser")
 	public ModelAndView deleteUser(@RequestParam int id) {
 		boolean check = true;
 		check = userService.deleteUser(id);
@@ -107,10 +107,10 @@ public class UserController {
 			model.addObject("errDeleteUser", "delete user has error");
 			return model;
 		}
-		return new ModelAndView("redirect:listUser");
+		return new ModelAndView("redirect:admin_listUser");
 
 	}
-	@RequestMapping("/editUser")
+	@RequestMapping("/admin_editUser")
     public ModelAndView editUser(@RequestParam int id){
     	UserBean userBean = userService.getUserById(id);
     	ModelAndView model = new ModelAndView();
@@ -122,10 +122,10 @@ public class UserController {
     	return new ModelAndView("editUser","userForm", userBean);
     }
 	
-	@RequestMapping("/updateUser")
+	@RequestMapping("/admin_updateUser")
     public ModelAndView updateUser(@ModelAttribute(value = "userForm") UserBean userBean, HttpServletRequest request){
     	boolean check = true;
-    	String role = request.getParameter("role");
+    	String role = request.getParameter("role").toUpperCase();
     	userBean.setRole(role);
     	check = userService.updateUser(userBean);
     	ModelAndView model = new ModelAndView();
@@ -134,7 +134,7 @@ public class UserController {
     		model.addObject("errUpdateUser", "Update user has error");
     		return model;
     	}
-    	return new ModelAndView("redirect:listUser");
+    	return new ModelAndView("redirect:admin_listUser");
     }
 	
 	@RequestMapping(value = "/showProfile", method = RequestMethod.GET)
@@ -150,4 +150,27 @@ public class UserController {
 			modelAndView.addObject("userBean", userBean);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/editProfile")
+    public ModelAndView editProfile(@RequestParam int id){
+    	UserBean userBean = userService.getIdProfile(id);
+    	ModelAndView model = new ModelAndView();
+    	if(userBean == null){
+    		model.addObject("errEditProfile", "edit proflie has error");
+    		model.setViewName("editProfile");
+    		return model;
+    	}
+    	return new ModelAndView("editProfile","profileForm", userBean);
+    }
+	
+	@RequestMapping(value = "/updateProfile")
+	public ModelAndView updateProfile(@ModelAttribute(value = "profileForm") UserBean userBean, HttpServletRequest request){
+    	ModelAndView model = new ModelAndView();
+    	if(!(userService.updateProfile(userBean))){
+    		model.setViewName("editProfile");
+    		model.addObject("errUpdateProfile", "Update profile has error");
+    		return model;
+    	}
+    	return new ModelAndView("redirect:showProfile");
+    }
 }

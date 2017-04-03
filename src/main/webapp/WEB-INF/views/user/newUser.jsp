@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <h2 class="margin-bottom-10">Add New User</h2>
-<form:form action="${pageContext.request.contextPath}/newUser"
+<form:form action="${pageContext.request.contextPath}/admin_newUser"
 	modelAttribute="userForm" class="templatemo-login-form" method="post">
 	<form:hidden path="id" class="form-control" id="id" />
 
@@ -38,8 +38,8 @@
 	<div class="input-group input-sm">
 		<label for="role">Role</label> <select name="role"
 			class="form-control" id="role">
-			<option value="user" selected="selected">ROLE_USER</option>
-			<option value="admin">ROLE_ADMIN</option>
+			<option value="user" selected="selected">USER</option>
+			<option value="admin">ADMIN</option>
 		</select>
 	</div>
 

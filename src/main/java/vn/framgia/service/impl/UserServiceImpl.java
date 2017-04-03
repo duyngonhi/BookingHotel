@@ -164,4 +164,25 @@ public class UserServiceImpl extends BaseserviceImpl implements IUserService {
 		}
 		return null;
 	}
+
+	@Override
+	public boolean updateProfile(UserBean userBean) {
+		try {
+			User user = userDAO.findById(userBean.getId());
+			if (user != null) {
+				user.setFullname(userBean.getFullname());
+				user.setUsername(userBean.getUsername());
+				user.setPassword(userBean.getPassword());
+				user.setEmail(userBean.getEmail());
+				user.setPhone(userBean.getPhone());
+				userDAO.save(user);
+				return true;
+			} else
+				return false;
+
+		} catch (Exception e) {
+			logger.debug("update user exception: " + e);
+		}
+		return false;
+	}
 }

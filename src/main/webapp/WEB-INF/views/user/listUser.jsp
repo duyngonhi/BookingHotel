@@ -48,10 +48,10 @@
 									<td><c:out value="${user.role}" /></td>
 									<td>
 										<button class="btn btn-theme">
-											<a href="editUser?id=${user.id}">Edit</a>
+											<a href="admin_editUser?id=${user.id}">Edit</a>
 										</button>
 										<button class="btn btn-theme">
-											<a href="deleteUser?id=${user.id}">Delete</a>
+											<a href="admin_deleteUser?id=${user.id}">Delete</a>
 										</button>
 									</td>
 								</tr>
@@ -60,7 +60,7 @@
 					</table>
 				</c:if>
 			<div class="btn">
-				<a href="${pageContext.request.contextPath}/newUser">Create
+				<a href="${pageContext.request.contextPath}/admin_newUser">Create
 					User</a>
 			</div>
 		</div>

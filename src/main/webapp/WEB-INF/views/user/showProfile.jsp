@@ -35,7 +35,7 @@
 			<c:out value="${userBean.role}" />
 		</div>
 		<button class="btn btn-theme">
-			<a href="editUser?id=${userBean.id}">Edit</a>
+			<a href="editProfile?id=${userBean.id}">Edit</a>
 		</button>
 </c:if>
 </div>
