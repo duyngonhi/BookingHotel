@@ -69,6 +69,13 @@
 		<put-attribute name="body" value="/WEB-INF/views/booking/viewBooking.jsp"/>
 	</definition>
 
+	<!-- view booking -->
+	<definition name="staticticalRevenue" extends="base.definition">
+		<put-attribute name="title" value="Booking"/>
+		<put-attribute name="body" value="/WEB-INF/views/booking/staticticalRevenue.jsp"/>
+	</definition>
+
+
 	<!-- booking -->
 	<definition name="booking" extends="base.definition">
 	<put-attribute name="title" value="Booking"/>

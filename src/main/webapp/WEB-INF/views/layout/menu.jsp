@@ -16,6 +16,7 @@
                 <c:if test="${!empty pageContext.request.userPrincipal.name}">
                     <li><a style="font-size: medium;" href="viewBooking">BOOKING</a></li>
                     <li><a style="font-size: medium;" href="showbooking">SHOWBOOKING</a></li>
+                    <li><a style="font-size: medium;" href="${pageContext.request.contextPath}/statictical">STATICTICAL</a></li>
                 </c:if>
                 </ul>
             </li>
