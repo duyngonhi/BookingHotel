@@ -6,6 +6,7 @@ import vn.framgia.util.Helpers;
 
 public class BillBean {
 	public final String NOTE = "REFUNEDE_" + Helpers.convertDateTimetoString(new Date());
+	private Integer id;
 	private Date paymentDate;
 	private Integer paymentAmount;
 	private String note;
@@ -36,12 +37,12 @@ public class BillBean {
 	}
 	
 	public BillBean(String datePayment, Integer paymentAmount, String note,
-			String nameUser) {
-		super();
+			String nameUser, Integer id) {
 		this.datePayment = datePayment;
 		this.paymentAmount = paymentAmount;
 		this.note = note;
 		this.nameUser = nameUser;
+		this.id = id;
 	}
 
 	public Date getPaymentDate() {
@@ -98,6 +99,14 @@ public class BillBean {
 
 	public void setDatePayment(String datePayment) {
 		this.datePayment = datePayment;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 		
 }

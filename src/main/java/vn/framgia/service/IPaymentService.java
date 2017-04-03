@@ -9,5 +9,5 @@ import vn.framgia.bean.PaymentBean;
 public interface IPaymentService extends Serializable{
 	public PaymentBean getinfoPayment(Integer bookingId);
 	public boolean savePayment(BillBean billBean);
-	public BillBeanClient getInfoPrintlBill(int bookingId);
+	public BillBeanClient getInfoPrintlBill(int bookingId, Integer billId);
 }

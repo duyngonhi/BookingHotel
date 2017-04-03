@@ -1,5 +1,6 @@
 package vn.framgia.service.impl;
 
+import vn.framgia.dao.IActivityDAO;
 import vn.framgia.dao.IBillDAO;
 import vn.framgia.dao.IBookingDAO;
 import vn.framgia.dao.IHotelDAO;
@@ -24,6 +25,7 @@ public class BaseserviceImpl implements Serializable {
     protected IBillDAO billDAO;
     protected IUserServiceDAO userServiceDAO;
     protected IClientDAO clientDAO;
+    protected IActivityDAO activityDAO;
 
     public IUserDAO getUserDAO() {
         return userDAO;
@@ -79,6 +81,14 @@ public class BaseserviceImpl implements Serializable {
 
 	public void setUserServiceDAO(IUserServiceDAO userServiceDAO) {
 		this.userServiceDAO = userServiceDAO;
+	}
+
+	public IActivityDAO getActivityDAO() {
+		return activityDAO;
+	}
+
+	public void setActivityDAO(IActivityDAO activityDAO) {
+		this.activityDAO = activityDAO;
 	}
     
     public IClientDAO getClientDAO() {

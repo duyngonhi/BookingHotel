@@ -2,67 +2,39 @@
     pageEncoding="UTF-8"%>
 
 <div class="col-lg-3 ds">
-    <!--COMPLETED ACTIONS DONUTS CHART-->
     <h3>NOTIFICATIONS</h3>
-    <!-- 1 -->
-    <div class="desc">
-        <div class="thumb">
-            <img class="img-circle" src="./DASHGUM - form booking 2_files/ui-divya.jpg" width="35px" height="35px"
-                 align="">
-        </div>
-        <div class="details">
-            <p><a href="http://www.blacktie.co/demo/dashgum/index.html#">DIVYA MANIAN</a><br>
-                <muted>Available</muted>
-            </p>
-        </div>
+    <div id="activitybook"></div>
+    <div style="text-align: center;">
+	    <i class="fa fa-angle-down"></i><a id="idshowMore" href="#">Show More</a>
     </div>
-    <!-- 2 -->
-    <div class="desc">
-        <div class="thumb">
-            <img class="img-circle" src="./DASHGUM - form booking 2_files/ui-sherman.jpg" width="35px" height="35px"
-                 align="">
-        </div>
-        <div class="details">
-            <p><a href="http://www.blacktie.co/demo/dashgum/index.html#">DJ SHERMAN</a><br>
-                <muted>I am Busy</muted>
-            </p>
-        </div>
-    </div>
-    <!-- 3 -->
-    <div class="desc">
-        <div class="thumb">
-            <img class="img-circle" src="./DASHGUM - form booking 2_files/ui-danro.jpg" width="35px" height="35px"
-                 align="">
-        </div>
-        <div class="details">
-            <p><a href="http://www.blacktie.co/demo/dashgum/index.html#">DAN ROGERS</a><br>
-                <muted>Available</muted>
-            </p>
-        </div>
-    </div>
-    <!-- 4 -->
-    <div class="desc">
-        <div class="thumb">
-            <img class="img-circle" src="./DASHGUM - form booking 2_files/ui-zac.jpg" width="35px" height="35px"
-                 align="">
-        </div>
-        <div class="details">
-            <p><a href="http://www.blacktie.co/demo/dashgum/index.html#">Zac Sniders</a><br>
-                <muted>Available</muted>
-            </p>
-        </div>
-    </div>
-    <!-- 5 -->
-    <div class="desc">
-        <div class="thumb">
-            <img class="img-circle" src="./DASHGUM - form booking 2_files/ui-sam.jpg" width="35px" height="35px"
-                 align="">
-        </div>
-        <div class="details">
-            <p><a href="http://www.blacktie.co/demo/dashgum/index.html#">Marcel Newman</a><br>
-                <muted>Available</muted>
-            </p>
-        </div>
-    </div>
-
 </div>
+<script type="text/javascript">
+	$(window).on('load', function name() {
+         $.get('activity?page=1',function(responseJson) {
+          if(responseJson!=null){
+              $.each(responseJson, function(key,value) {
+           	   $('#activitybook').append("<div class=\"desc\"><div class=\"thumb\"><img class=\"img-circle\" src=\"assets/img/user.jpg\""+
+                  		" width=\"35px\" height=\"35px\"></div><div class=\"details\"><p><a href=\"#\">"+value['nameUser']+"</a>"+
+                  		"<a style=\"margin-left: 30px\" href=\"#\">Email:"+value['email']+"</a><br><muted>"+value['action']+"</muted></p></div></div>");
+              });
+              }
+          });
+	});
+	
+	$('#idshowMore').on('click', function(){
+// 		$('#activitybook').empty();
+		gethistory(2);
+	});
+	
+	function gethistory(page) {
+		$.get('activity?page='+page,function(responseJson) {
+          if(responseJson!=null){
+              $.each(responseJson, function(key,value) {
+           	   $('#activitybook').append("<div class=\"desc\"><div class=\"thumb\"><img class=\"img-circle\" src=\"assets/img/user.jpg\""+
+	           		" width=\"35px\" height=\"35px\"></div><div class=\"details\"><p><a href=\"#\">"+value['nameUser']+"</a>"+
+	           		"<a style=\"margin-left: 30px\" href=\"#\">Email:"+value['email']+"</a><br><muted>"+value['action']+"</muted></p></div></div>");
+              });
+           }
+        });
+	}
+</script>

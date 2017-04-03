@@ -60,7 +60,7 @@
 							</c:if>	
 							<td>
 								<a class="badge bg-success" href="payment?id=${book.bookingId}">PAY</a>
-								<a class="badge bg-success" href="detailbill?id=${book.bookingId}">DETAIL</a>
+							<%--<a class="badge bg-success" href="detailbill?id=${book.bookingId}">DETAIL</a> --%>
 							</td>
 						</tr>
 					</c:forEach>

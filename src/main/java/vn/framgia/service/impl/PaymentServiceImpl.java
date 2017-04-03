@@ -126,7 +126,7 @@ public class PaymentServiceImpl extends BaseserviceImpl implements IPaymentServi
 			for(Bill bill : lstBill){
 				lstHistory.add(new BillBean(Helpers.convertDatetoString(bill
 						.getPaymentDate()), (int)(float)bill.getPaymentAmount(), bill
-						.getNote(), bill.getUser().getFullname()));
+						.getNote(), bill.getUser().getFullname(), bill.getId()));
 			}
 		}catch(Exception e){
 			logger.error("ERROR GET HISTORY PAYMENT BY BOOKINGID: ", e);
@@ -135,20 +135,21 @@ public class PaymentServiceImpl extends BaseserviceImpl implements IPaymentServi
 	}
 
 	@Override
-	public BillBeanClient getInfoPrintlBill(int bookingId) {
+	public BillBeanClient getInfoPrintlBill(int bookingId, Integer billId) {
 		BillBeanClient beanClient = new BillBeanClient();
 		try {
 			Booking booking = bookingDAO.findById(bookingId);
 			if (booking == null) {
 				return null;
 			}
+			beanClient.setBookingId(bookingId);
 			beanClient.setAddress(booking.getClient().getAddress());
 			beanClient.setCustomer(booking.getClient().getFullName());
 			beanClient.setDay(String.valueOf(Helpers.getComponentDate(new Date(), BillBeanClient.DAY)));
 			beanClient.setMonth(String.valueOf(Helpers.getComponentDate(new Date(), BillBeanClient.MONTH)));
 			beanClient.setYear(String.valueOf(Helpers.getComponentDate(new Date(), BillBeanClient.YEAR)));
 			beanClient.setPhone(booking.getClient().getPhone());
-			beanClient.setDetailBean(getBillDetailBean(booking));
+			beanClient.setDetailBean(getBillDetailBean(booking, billId));
 			User user = userDAO.getUserById(Helpers.getIdUser());
 			if(user != null){
 				beanClient.setCreateBy(user.getFullname());
@@ -161,7 +162,7 @@ public class PaymentServiceImpl extends BaseserviceImpl implements IPaymentServi
 		return beanClient;
 	}
 	
-	public BillDetailBean getBillDetailBean(Booking booking) {
+	public BillDetailBean getBillDetailBean(Booking booking, Integer billId) {
 		BillDetailBean billDetailBean = new BillDetailBean();
 		try{
 			if(booking == null){
@@ -171,6 +172,18 @@ public class PaymentServiceImpl extends BaseserviceImpl implements IPaymentServi
 			billDetailBean.setRoom(booking.getRoom().getName());
 			billDetailBean.setServiceFollow(getServicefollow(booking.getId()));
 			billDetailBean.setTotalRoom((int)(float)booking.getTotalPrice());
+			int total = (int)(float)(booking.getTotalPrice());
+			Bill bill = billDAO.findBillById(billId);
+			if(bill != null){
+				billDetailBean.setRefunded((int)(float)bill.getPaymentAmount());
+			}
+			int refunded = getTotalPaymentAmountByBooking(booking.getId());
+			if (refunded >= total) {
+				billDetailBean.setRemain(PaymentBean.ZERO_NUMBER);
+			} else {
+				billDetailBean.setRemain(total - refunded);
+			}
+			
 		}catch(Exception e){
 			logger.error("ERROR GET BILL DETAIL BEAN: ", e);
 		}
@@ -192,5 +205,6 @@ public class PaymentServiceImpl extends BaseserviceImpl implements IPaymentServi
 			logger.error("ERROR GET SERVICE FOLLOW: ", e);
 		}
 		return lstPaymentDetail;
-	} 
+	}
+	
 }

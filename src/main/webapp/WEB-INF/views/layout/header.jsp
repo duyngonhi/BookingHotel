@@ -33,7 +33,7 @@
 		</form>
 	</ul>
 	<ul class="nav pull-right top-menu">
-		<c:if test="${empty pageContext.request.userPrincipal.name}">
+		<c:if test="${empty (pageContext.request.userPrincipal).name}">
 	        <li><a class="logout" href="login">Login</a></li>
 		</c:if>
 	</ul>

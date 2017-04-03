@@ -50,7 +50,13 @@
 
 	<bean id="ClientDAO" class="vn.framgia.dao.impl.ClienDAOImpl">
 		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="ActivityDAO" class="vn.framgia.dao.impl.ActivityDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
 		</property>
 	</bean>
 </beans>
