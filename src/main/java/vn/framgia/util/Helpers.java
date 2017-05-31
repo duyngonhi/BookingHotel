@@ -6,6 +6,13 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import vn.framgia.bean.BillBeanClient;
+import vn.framgia.security.CustomUserDetail;
 
 /**
  * Created by FRAMGIA\duong.van.tien on 06/03/2017.
@@ -365,4 +372,73 @@ public final class Helpers {
             list.remove(list.size() - 1);
         }
     }
+    
+    public static String convertDatetoString(Date date){
+    	try{
+    		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    		return dateFormat.format(date);
+    		
+    	}catch(Exception e){
+    		return "";
+    	}
+    }
+
+    public static String convertDateTimetoString(Date date) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            return dateFormat.format(date);
+
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+	public static Integer getIdUser() {
+		CustomUserDetail userDetail = null;
+		try {
+			userDetail = (CustomUserDetail) SecurityContextHolder.getContext()
+					.getAuthentication().getPrincipal();
+			if (userDetail == null) {
+				return 0;
+			}
+		} catch (Exception e) {
+			return 0;
+		}
+		return Integer.valueOf(userDetail.getUserId());
+	}
+
+    public static Date convertStringtoDate(String strDate) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            return sdf.parse(strDate);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static long getDayBetweenTwoDates(Date startDate, Date endDate) {
+        Long diff = endDate.getTime() - startDate.getTime();
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    }
+	
+	public static int getComponentDate(Date date, String component) {
+		int result = 0;
+		try {
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+			if (BillBeanClient.DAY == component) {
+				result = calendar.get(Calendar.DAY_OF_MONTH);
+			}
+			if (BillBeanClient.MONTH == component) {
+				result = calendar.get(Calendar.MONTH);
+			}
+			if (BillBeanClient.YEAR == component) {
+				result = calendar.get(Calendar.YEAR);
+			}
+		} catch (Exception e) {
+			return 0;
+		}
+		return result;
+	}
+	
 }

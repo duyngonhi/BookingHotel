@@ -1,12 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-	<bean id="UserService" class="vn.framgia.service.UserService">
-		<property name="userDAO">
-			<ref bean="UserDAO" />
+	<bean id="UserService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="vn.framgia.service.impl.UserServiceImpl">
+				<property name="userDAO" ref="UserDAO"></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="RoomService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="vn.framgia.service.impl.RoomServiceImpl">
+				<property name="roomDAO" ref="RoomDAO"/>
+				<property name="hotelDAO" ref="HotelDAO"></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="BookingService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="vn.framgia.service.impl.BookingServiceImpl">
+				<property name="bookingDAO" ref="BookingDAO"/>
+				<property name="billDAO" ref="BillDAO"/>
+				<property name="userServiceDAO" ref="UserServiceDAO"/>
+				<property name="itemDAO" ref="ItemDAO"/>
+				<property name="clientDAO" ref="ClientDAO"/>
+				<property name="roomDAO" ref="RoomDAO"/>
+			</bean>
+		</property>
+	</bean>
+
+    <bean id="HotelService" parent="transactionProxyTemplate">
+        <property name="target">
+            <bean class="vn.framgia.service.impl.HotelServiceImpl">
+                <property name="hotelDAO" ref="HotelDAO"></property>
+            </bean>
+        </property>
+    </bean>
+
+	<bean id="ItemService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="vn.framgia.service.impl.ItemServiceImpl">
+				<property name="itemDAO" ref="ItemDAO"/>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="PaymentService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="vn.framgia.service.impl.PaymentServiceImpl">
+				<property name="userServiceDAO" ref="UserServiceDAO"/>
+				<property name="billDAO" ref="BillDAO"/>
+				<property name="bookingDAO" ref="BookingDAO"/>
+				<property name="userDAO" ref="UserDAO"/>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="ClientService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="vn.framgia.service.impl.ClientServiceImpl">
+				<property name="clientDAO" ref="ClientDAO" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="ActivityService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="vn.framgia.service.impl.ActivityServiceImpl">
+				<property name="billDAO" ref="BillDAO"/>
+				<property name="bookingDAO" ref="BookingDAO"/>
+				<property name="userDAO" ref="UserDAO"/>
+				<property name="activityDAO" ref="ActivityDAO"/>
+			</bean>
 		</property>
 	</bean>
 </beans>

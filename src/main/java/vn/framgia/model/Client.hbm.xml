@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 9, 2017 6:59:30 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="vn.framgia.model.Client" table="tblClient">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="fullName" type="java.lang.String">
+            <column name="FULLNAME" />
+        </property>
+        <property name="cardNumber" type="java.lang.String">
+            <column name="CARDNUMBER" />
+        </property>
+        <property name="birthDay" type="java.util.Date">
+            <column name="BIRTHDAY" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+
+        <list name="bookings" cascade="all" table="tblBooking" lazy="true" fetch="select">
+            <key column="clientId" />
+            <index column="idx"/>
+            <one-to-many class="vn.framgia.model.Booking" />
+        </list>
+    </class>
+</hibernate-mapping>

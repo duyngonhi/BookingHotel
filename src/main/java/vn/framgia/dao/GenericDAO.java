@@ -119,4 +119,12 @@ public abstract class GenericDAO<E, Id extends Serializable> extends HibernateDa
 		return crit.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<E> list(Integer offset, Integer maxResults) {
+		return getSession().createCriteria(getPersistentClass())
+				.setFirstResult(offset!=null?offset:0)
+				.setMaxResults(maxResults!=null?maxResults:15)
+				.list();
+	}
+
 }

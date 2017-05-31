@@ -40,8 +40,17 @@
 		<property name="mappingLocations">
 			<list>
 				<value>classpath*:vn/framgia/model/User.hbm.xml</value>
+				<value>classpath*:vn/framgia/model/Booking.hbm.xml</value>
+				<value>classpath*:vn/framgia/model/Client.hbm.xml</value>
+				<value>classpath*:vn/framgia/model/Hotel.hbm.xml</value>
+				<value>classpath*:vn/framgia/model/Room.hbm.xml</value>
+				<value>classpath*:vn/framgia/model/Item.hbm.xml</value>
+				<value>classpath*:vn/framgia/model/Bill.hbm.xml</value>
+				<value>classpath*:vn/framgia/model/UsedItem.hbm.xml</value>
+				<value>classpath*:vn/framgia/model/Activity.hbm.xml</value>
 			</list>
 		</property>
+
 	</bean>
 
 	<!-- Transaction manager for a single Hibernate SessionFactory -->
@@ -68,5 +77,5 @@
 			</props>
 		</property>
 	</bean>
-	
+
 </beans>

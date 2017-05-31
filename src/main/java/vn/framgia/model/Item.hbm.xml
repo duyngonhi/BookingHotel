@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="vn.framgia.model.Item" table="tblItem">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" length="6"/>
+            <generator class="increment"/>
+        </id>
+
+        <property name="name" type="java.lang.String">
+            <column name="name" length="50"/>
+        </property>
+
+        <property name="price" type="java.lang.Float">
+            <column name="price" length="10"/>
+        </property>
+
+        <property name="description" type="java.lang.String">
+            <column name="description" length="200"/>
+        </property>
+
+        <list name="bookings" inverse="true" cascade="all" table="tblUsedItem" lazy="true" fetch="select">
+            <key column="itemId"/>
+            <index column="idx"/>
+            <many-to-many column="bookingId" class="vn.framgia.model.Booking"/>
+        </list>
+    </class>
+</hibernate-mapping>

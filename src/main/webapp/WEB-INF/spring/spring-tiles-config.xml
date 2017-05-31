@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
 
-	<definition name="base.definition"
-		template="/WEB-INF/views/layout/layout.jsp">
+	<definition name="base.definition" template="/WEB-INF/views/layout/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
 		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
@@ -15,6 +14,117 @@
 	<definition name="index" extends="base.definition">
 		<put-attribute name="title" value="Home" />
 		<put-attribute name="body" value="/WEB-INF/views/index.jsp" />
+	</definition>
+	
+	<definition name="login" extends="base.definition">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+	<!-- room -->
+	<definition name="showRoom" extends="base.definition">
+		<put-attribute name="title" value="Home"/>
+		<put-attribute name="body" value="/WEB-INF/views/room/room.jsp"/>
+	</definition>
+
+    <!-- show room -->
+    <definition name="rooms" extends="base.definition">
+        <put-attribute name="title" value="Home"/>
+        <put-attribute name="body" value="/WEB-INF/views/room/rooms.jsp"/>
+    </definition>
+
+    <!-- add room -->
+    <definition name="newRoom" extends="base.definition">
+        <put-attribute name="title" value="Home"/>
+        <put-attribute name="body" value="/WEB-INF/views/room/new.jsp"/>
+    </definition>
+
+	<!-- edit room -->
+	<definition name="editRoom" extends="base.definition">
+		<put-attribute name="title" value="Home"/>
+		<put-attribute name="body" value="/WEB-INF/views/room/edit.jsp"/>
+	</definition>
+
+	<!-- show items -->
+	<definition name="items" extends="base.definition">
+		<put-attribute name="title" value="Home"/>
+		<put-attribute name="body" value="/WEB-INF/views/item/items.jsp"/>
+	</definition>
+
+	<!-- add item -->
+	<definition name="newItem" extends="base.definition">
+		<put-attribute name="title"	value="Home"/>
+		<put-attribute name="body" value="/WEB-INF/views/item/new.jsp"/>
+	</definition>
+
+	<!-- edit item -->
+	<definition name="editItem" extends="base.definition">
+		<put-attribute name="title" value="Home"/>
+		<put-attribute name="body" value="/WEB-INF/views/item/edit.jsp"/>
+	</definition>
+
+	<!-- view booking -->
+	<definition name="viewBooking" extends="base.definition">
+		<put-attribute name="title" value="Booking"/>
+		<put-attribute name="body" value="/WEB-INF/views/booking/viewBooking.jsp"/>
+	</definition>
+
+	<!-- view booking -->
+	<definition name="staticticalRevenue" extends="base.definition">
+		<put-attribute name="title" value="Booking"/>
+		<put-attribute name="body" value="/WEB-INF/views/booking/staticticalRevenue.jsp"/>
+	</definition>
+
+
+	<!-- booking -->
+	<definition name="booking" extends="base.definition">
+	<put-attribute name="title" value="Booking"/>
+	<put-attribute name="body" value="/WEB-INF/views/booking/booking.jsp"/>
+	</definition>
+
+	<definition name="newUser" extends="base.definition">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="body" value="/WEB-INF/views/user/newUser.jsp" />
+	</definition>
+	
+	<definition name="showbooking" extends="base.definition">
+		<put-attribute name="title" value="Show Booking" />
+		<put-attribute name="body" value="/WEB-INF/views/booking/user_showbooking.jsp" />
+	</definition>
+
+	<definition name="searchRoom" extends="base.definition">
+		<put-attribute name="title" value="Show Booking" />
+		<put-attribute name="body" value="/WEB-INF/views/booking/searchRoom.jsp" />
+	</definition>
+
+	<definition name="listUser" extends="base.definition">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="body" value="/WEB-INF/views/user/listUser.jsp" />
+	</definition>
+	
+	<definition name="editUser" extends="base.definition">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="body" value="/WEB-INF/views/user/editUser.jsp" />
+	</definition>
+	
+	<definition name="showProfile" extends="base.definition">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="body" value="/WEB-INF/views/user/showProfile.jsp" />
+	</definition>
+	
+	<definition name="payment" extends="base.definition">
+		<put-attribute name="title" value="Payment" />
+		<put-attribute name="body" value="/WEB-INF/views/bill/payment.jsp" />
+	</definition>
+	
+	<definition name="detailbill" extends="base.definition">
+		<put-attribute name="title" value="Detail Bill" />
+		<put-attribute name="body" value="/WEB-INF/views/bill/detailbill.jsp" />
+	</definition>
+
+	<definition name="editProfile" extends="base.definition">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="body" value="/WEB-INF/views/user/editProfile.jsp" />
 	</definition>
 
 </tiles-definitions>

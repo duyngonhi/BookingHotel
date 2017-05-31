@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 14, 2017 9:40:08 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="vn.framgia.model.UsedItem" table="tblUsedItem">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="booking" class="vn.framgia.model.Booking" fetch="select">
+            <column name="BOOKINGID" />
+        </many-to-one>
+        <many-to-one name="item" class="vn.framgia.model.Item" fetch="select">
+            <column name="ITEMID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="vn.framgia.model.User" table="tblUser">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="increment" />
         </id>

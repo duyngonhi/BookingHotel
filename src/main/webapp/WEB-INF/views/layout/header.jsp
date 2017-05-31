@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--header start-->
 <header class="header black-bg">
 <div class="sidebar-toggle-box">
@@ -26,11 +27,21 @@
 </div>
 <div class="top-menu">
 	<ul class="nav pull-right top-menu">
-        <li><a class="logout" href="#">Logout</a></li>
+        <li><a class="logout" id="btnLogin" href="#">Logout</a></li>
+        <form id="logoutForm" action="<c:url value="/j_spring_security_logout"/>" method="post" >
+			<input name="${_csrf.parameterName}" value="${_csrf.token}" type="hidden"/>
+		</form>
 	</ul>
 	<ul class="nav pull-right top-menu">
-        <li><a class="logout" href="#">Register</a></li>
+		<c:if test="${empty (pageContext.request.userPrincipal).name}">
+	        <li><a class="logout" href="login">Login</a></li>
+		</c:if>
 	</ul>
 </div>
 </header>
 <!--header end-->
+<script>
+	$("#btnLogin").on("click",function(){
+		$("#logoutForm").submit();
+	});
+</script>

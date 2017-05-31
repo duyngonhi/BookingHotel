@@ -4,7 +4,57 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-	<bean id="UserDAO" class="vn.framgia.dao.UserDAO">
+	<bean id="UserDAO" class="vn.framgia.dao.impl.UserDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="BookingDAO" class="vn.framgia.dao.impl.BookingDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+
+	<bean id="RoomDAO" class="vn.framgia.dao.impl.RoomDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+
+	<bean id="HotelDAO" class="vn.framgia.dao.impl.HotelDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+
+	<bean id="ItemDAO" class="vn.framgia.dao.impl.ItemDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+
+	<bean id="BillDAO" class="vn.framgia.dao.impl.BillDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="UserServiceDAO" class="vn.framgia.dao.impl.UserServiceDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="ClientDAO" class="vn.framgia.dao.impl.ClienDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="ActivityDAO" class="vn.framgia.dao.impl.ActivityDAOImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
